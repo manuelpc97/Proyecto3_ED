@@ -36,14 +36,13 @@ public class Principal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         cb_Material_coneccion = new javax.swing.JComboBox<>();
-        bt_MB = new javax.swing.JRadioButton();
-        bt_Gb = new javax.swing.JRadioButton();
         tf_Ancho_de_banda = new javax.swing.JTextField();
         tf_Nombre_coneccion = new javax.swing.JTextField();
         tf_Longitud_Cable = new javax.swing.JTextField();
         bt_crearInstalacion = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -68,12 +67,6 @@ public class Principal extends javax.swing.JFrame {
 
         cb_Material_coneccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cobre", "Fibra Optica" }));
 
-        buttonGroup1.add(bt_MB);
-        bt_MB.setText("Mb/s");
-
-        buttonGroup1.add(bt_Gb);
-        bt_Gb.setText("Gb/s");
-
         bt_crearInstalacion.setText("Crear");
         bt_crearInstalacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -86,6 +79,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel7.setText("Propiedades del Repetidor");
 
         jLabel8.setText("Metros");
+
+        jLabel9.setText("Mb/s");
 
         javax.swing.GroupLayout Jframe_PropiedadesLayout = new javax.swing.GroupLayout(Jframe_Propiedades.getContentPane());
         Jframe_Propiedades.getContentPane().setLayout(Jframe_PropiedadesLayout);
@@ -105,15 +100,12 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(Jframe_PropiedadesLayout.createSequentialGroup()
-                                            .addComponent(tf_Ancho_de_banda, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(bt_Gb, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(bt_MB))
-                                        .addComponent(cb_Material_coneccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tf_Nombre_coneccion))
+                                    .addGroup(Jframe_PropiedadesLayout.createSequentialGroup()
+                                        .addComponent(tf_Ancho_de_banda, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel9))
+                                    .addComponent(cb_Material_coneccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tf_Nombre_coneccion, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(Jframe_PropiedadesLayout.createSequentialGroup()
                                         .addComponent(tf_Longitud_Cable, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -138,9 +130,8 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(bt_MB)
-                    .addComponent(bt_Gb)
-                    .addComponent(tf_Ancho_de_banda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_Ancho_de_banda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_Longitud_Cable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,19 +284,33 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_redDomesticMouseClicked
 
     private void bt_crearInstalacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_crearInstalacionMouseClicked
-        String nombre = this.tf_Nombre_coneccion.getText();
-        int materialConexion = this.cb_Material_coneccion.getSelectedIndex() + 1;
-        int longitudCable = Integer.parseInt(this.tf_Longitud_Cable.getText());
-        int anchoBanda = Integer.parseInt(this.tf_Ancho_de_banda.getText());
-        Instalacion nuevaInstalacion = new Instalacion();
-        if (nuevaInstalacion.datosCorrectos(anchoBanda) == false) {
-            JOptionPane.showMessageDialog(this, "Ancho de banda no soportado por el material", "ERROR", JOptionPane.WARNING_MESSAGE);
+        boolean correcto = true;
+        int anchoBanda = 0;
+        if (this.cb_Material_coneccion.getSelectedItem().equals("Cobre")) {
+            if (Integer.parseInt(this.tf_Ancho_de_banda.getText()) > 100 || Integer.parseInt(this.tf_Ancho_de_banda.getText()) <= 0) {
+                correcto = false;
+                JOptionPane.showMessageDialog(this, "Ancho de banda no permitido para Cable de Cobre");
+            }
         } else {
-            nuevaInstalacion = new Instalacion(nombre, tipoPunto, materialConexion, longitudCable, anchoBanda);
-            this.listaInstalaciones.push(nuevaInstalacion);
+            if (Integer.parseInt(this.tf_Ancho_de_banda.getText()) > 10240 || Integer.parseInt(this.tf_Ancho_de_banda.getText()) <= 0) {
+                correcto = false;
+                JOptionPane.showMessageDialog(this, "Ancho de banda no permitido para Cable de Fibra Optica");
+            }
+        }
+
+        if (correcto) {
+            String nombre = this.tf_Nombre_coneccion.getText();
+            int materialConexion = this.cb_Material_coneccion.getSelectedIndex() + 1;
+            int longitudCable = Integer.parseInt(this.tf_Longitud_Cable.getText());
+            anchoBanda = Integer.parseInt(this.tf_Ancho_de_banda.getText());
+            Instalacion nuevaInstalacion = new Instalacion(nombre, tipoPunto, materialConexion, longitudCable, anchoBanda);
+            this.listaInstalaciones.insert(nuevaInstalacion, 0);
             JOptionPane.showMessageDialog(null, "Conexion Agregada");
             this.Jframe_Propiedades.setVisible(false);
+        } else {
+            this.limpiarPropiedadesdeConeccion();
         }
+
     }//GEN-LAST:event_bt_crearInstalacionMouseClicked
 
     private void bt_redEmpresarialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_redEmpresarialMouseClicked
@@ -333,7 +338,6 @@ public class Principal extends javax.swing.JFrame {
     }
 
     private void limpiarPropiedadesdeConeccion() {
-        this.bt_MB.setSelected(true);
         this.tf_Nombre_coneccion.setText("");
         this.cb_Material_coneccion.setSelectedIndex(0);
         this.tf_Ancho_de_banda.setText("");
@@ -379,9 +383,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JFrame Jframe_Propiedades;
     private javax.swing.JButton bt_AntenaCelular;
     private javax.swing.JButton bt_ExportarMapadeRed;
-    private javax.swing.JRadioButton bt_Gb;
     private javax.swing.JButton bt_ImportarMapadeRed;
-    private javax.swing.JRadioButton bt_MB;
     private javax.swing.JButton bt_coneccionDedicadal;
     private javax.swing.JButton bt_crearInstalacion;
     private javax.swing.JButton bt_redDomestic;
@@ -396,6 +398,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField tf_Ancho_de_banda;
