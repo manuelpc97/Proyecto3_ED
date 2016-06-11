@@ -297,10 +297,15 @@ public class Principal extends javax.swing.JFrame {
         int materialConexion = this.cb_Material_coneccion.getSelectedIndex() + 1;
         int longitudCable = Integer.parseInt(this.tf_Longitud_Cable.getText());
         int anchoBanda = Integer.parseInt(this.tf_Ancho_de_banda.getText());
-        Instalacion nuevaInstalacion = new Instalacion(nombre, tipoPunto, materialConexion, longitudCable, anchoBanda);
-        this.listaInstalaciones.insert(nuevaInstalacion, 0);
-        JOptionPane.showMessageDialog(null, "Conexion Agregada");
-        this.Jframe_Propiedades.setVisible(false);
+        Instalacion nuevaInstalacion = new Instalacion();
+        if (nuevaInstalacion.datosCorrectos(anchoBanda) == false) {
+            JOptionPane.showMessageDialog(this, "Ancho de banda no soportado por el material", "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else {
+            nuevaInstalacion = new Instalacion(nombre, tipoPunto, materialConexion, longitudCable, anchoBanda);
+            this.listaInstalaciones.push(nuevaInstalacion);
+            JOptionPane.showMessageDialog(null, "Conexion Agregada");
+            this.Jframe_Propiedades.setVisible(false);
+        }
     }//GEN-LAST:event_bt_crearInstalacionMouseClicked
 
     private void bt_redEmpresarialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_redEmpresarialMouseClicked
