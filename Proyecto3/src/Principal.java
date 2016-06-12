@@ -388,7 +388,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_CrearRedesMouseClicked
 
     private void bt_AnalisisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_AnalisisMouseClicked
-
+            
+        
     }//GEN-LAST:event_bt_AnalisisMouseClicked
 
     private void tf_NombrePuntoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_NombrePuntoMouseClicked
