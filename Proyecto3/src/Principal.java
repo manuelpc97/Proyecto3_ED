@@ -37,7 +37,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        cb_Material_coneccion = new javax.swing.JComboBox<String>();
+        cb_Material_coneccion = new javax.swing.JComboBox<>();
         tf_Ancho_de_banda = new javax.swing.JTextField();
         tf_Longitud_Cable = new javax.swing.JTextField();
         bt_crearInstalacion = new javax.swing.JButton();
@@ -51,8 +51,18 @@ public class Principal extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         tf_NombrePunto = new javax.swing.JTextField();
-        cb_tipoPunto = new javax.swing.JComboBox<String>();
+        cb_tipoPunto = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
+        JFrame_Analisis = new javax.swing.JFrame();
+        jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jFrame_caminoCorto = new javax.swing.JFrame();
+        jLabel11 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         bt_crearPunto = new javax.swing.JButton();
@@ -71,7 +81,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel6.setText("Nodo a conectar");
 
-        cb_Material_coneccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cobre", "Fibra Optica" }));
+        cb_Material_coneccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cobre", "Fibra Optica" }));
 
         bt_crearInstalacion.setText("Crear");
         bt_crearInstalacion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,7 +197,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        cb_tipoPunto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Red Domestica", "Red Empresarial", "Antena Celular", "Conexion Dedicada" }));
+        cb_tipoPunto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Red Domestica", "Red Empresarial", "Antena Celular", "Conexion Dedicada" }));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -230,6 +240,92 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
+        );
+
+        jLabel2.setText("Analisis");
+
+        jButton2.setText("Camino mas corto");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jButton3.setText("Mayor ancho de banda");
+
+        javax.swing.GroupLayout JFrame_AnalisisLayout = new javax.swing.GroupLayout(JFrame_Analisis.getContentPane());
+        JFrame_Analisis.getContentPane().setLayout(JFrame_AnalisisLayout);
+        JFrame_AnalisisLayout.setHorizontalGroup(
+            JFrame_AnalisisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JFrame_AnalisisLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(JFrame_AnalisisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrame_AnalisisLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JFrame_AnalisisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(73, Short.MAX_VALUE))
+        );
+
+        JFrame_AnalisisLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, jButton3, jButton4});
+
+        JFrame_AnalisisLayout.setVerticalGroup(
+            JFrame_AnalisisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JFrame_AnalisisLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(40, 40, 40)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
+        JFrame_AnalisisLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton2, jButton3, jButton4});
+
+        jLabel11.setText("Camino mas corto");
+
+        jButton5.setText(" ");
+
+        jButton6.setText(" ");
+
+        javax.swing.GroupLayout jFrame_caminoCortoLayout = new javax.swing.GroupLayout(jFrame_caminoCorto.getContentPane());
+        jFrame_caminoCorto.getContentPane().setLayout(jFrame_caminoCortoLayout);
+        jFrame_caminoCortoLayout.setHorizontalGroup(
+            jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
+            .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
+                .addGroup(jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jLabel11))
+                    .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jFrame_caminoCortoLayout.setVerticalGroup(
+            jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6))
+                .addGap(40, 40, 40))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -388,8 +484,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_CrearRedesMouseClicked
 
     private void bt_AnalisisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_AnalisisMouseClicked
-            
-        
+        this.JFrame_Analisis.pack();
+        this.JFrame_Analisis.setLocationRelativeTo(this);
+        this.JFrame_Analisis.setVisible(true);
+
     }//GEN-LAST:event_bt_AnalisisMouseClicked
 
     private void tf_NombrePuntoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_NombrePuntoMouseClicked
@@ -414,6 +512,12 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ya eligio los nodos necesarios", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_bt_seleccionarNodoMouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        this.jFrame_caminoCorto.pack();
+        this.jFrame_caminoCorto.setLocationRelativeTo(this);
+        this.jFrame_caminoCorto.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
 
     public void listInComboBox(Lista list, JComboBox cb) {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
@@ -481,6 +585,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame JFrame_Analisis;
     private javax.swing.JFrame JFrame_Conexion;
     private javax.swing.JFrame Jframe_crearPunto;
     private javax.swing.JButton bt_Analisis;
@@ -492,11 +597,20 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox cb_listaNodos;
     private javax.swing.JComboBox<String> cb_tipoPunto;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JFrame jFrame_caminoCorto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
