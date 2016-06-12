@@ -32,7 +32,12 @@ public class Grafo {
     }
 
     public Lista getTodosVertices() {
-        return todosVertices;
+        Lista retorno = new Lista();
+        retorno.push(this.verticePrincipal);
+        for (int i = 0; i < this.todosVertices.getSize(); i++) {
+            retorno.push(((Vertice)this.todosVertices.get(i)));
+        }
+        return retorno;
     }
 
     public void setTodosVertices(Lista todosVertices) {
@@ -53,18 +58,7 @@ public class Grafo {
     }
 
     public void addEdge(Vertice origin, Vertice destiny) {
-        Arista edge = new Arista();
-        if (verificarExistencia(origin) && verificarExistencia(destiny)) {
-            Instalacion nueva = new Instalacion();
-            edge = new Arista(origin, destiny);
-            nueva = (Instalacion) destiny.getValue();
-            edge.setMaterialConexion(nueva.getMaterialConexion());
-            edge.setLongitudCable(nueva.getLongitudCable());
-            edge.setAnchoBanda(nueva.getAnchoBanda());
-        } else {
-            JOptionPane.showMessageDialog(null, "Uno de estos vertices no existe en el grafo",
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-        }
+
     }
 
     public boolean isAdyacente(Vertice uno, Vertice dos) {

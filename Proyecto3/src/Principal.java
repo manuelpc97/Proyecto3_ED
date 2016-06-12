@@ -303,7 +303,7 @@ public class Principal extends javax.swing.JFrame {
             int materialConexion = this.cb_Material_coneccion.getSelectedIndex() + 1;
             int longitudCable = Integer.parseInt(this.tf_Longitud_Cable.getText());
             anchoBanda = Integer.parseInt(this.tf_Ancho_de_banda.getText());
-            Instalacion nuevaInstalacion = new Instalacion(nombre, tipoPunto, materialConexion, longitudCable, anchoBanda);
+            Instalacion nuevaInstalacion = new Instalacion(nombre, tipoPunto);
             this.listaInstalaciones.insert(nuevaInstalacion, 0);
             JOptionPane.showMessageDialog(null, "Conexion Agregada");
             this.Jframe_Propiedades.setVisible(false);
@@ -406,5 +406,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_Nombre_coneccion;
     // End of variables declaration//GEN-END:variables
 Lista listaInstalaciones = new Lista();
-    int tipoPunto;
+int tipoPunto;
 }
