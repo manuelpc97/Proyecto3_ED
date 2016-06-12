@@ -55,4 +55,9 @@ public class Instalacion {
         }
     }
 
+    @Override
+    public String toString() {
+        return nombre + " ";
+    }
+
 }

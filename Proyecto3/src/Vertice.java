@@ -37,4 +37,9 @@ public class Vertice {
         this.aristas = aristas;
     }
 
+    @Override
+    public String toString() {
+        return value+"";
+    }
+    
 }

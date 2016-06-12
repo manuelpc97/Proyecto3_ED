@@ -1,4 +1,6 @@
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /*
@@ -30,36 +32,26 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Jframe_Propiedades = new javax.swing.JFrame();
+        JFrame_Conexion = new javax.swing.JFrame();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        cb_Material_coneccion = new javax.swing.JComboBox<>();
+        cb_Material_coneccion = new javax.swing.JComboBox<String>();
         tf_Ancho_de_banda = new javax.swing.JTextField();
-        tf_Nombre_coneccion = new javax.swing.JTextField();
         tf_Longitud_Cable = new javax.swing.JTextField();
         bt_crearInstalacion = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jFrame_Conexion = new javax.swing.JFrame();
-        jPanel1 = new javax.swing.JPanel();
-        bt_redDomestic = new javax.swing.JButton();
-        bt_redEmpresarial = new javax.swing.JButton();
-        bt_ImportarMapadeRed = new javax.swing.JButton();
-        bt_AntenaCelular = new javax.swing.JButton();
-        bt_coneccionDedicadal = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        bt_ExportarMapadeRed = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        cb_listaNodos = new javax.swing.JComboBox();
+        bt_seleccionarNodo = new javax.swing.JButton();
         Jframe_crearPunto = new javax.swing.JFrame();
         jButton1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         tf_NombrePunto = new javax.swing.JTextField();
-        cb_tipoPunto = new javax.swing.JComboBox<>();
+        cb_tipoPunto = new javax.swing.JComboBox<String>();
         jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -68,8 +60,8 @@ public class Principal extends javax.swing.JFrame {
         bt_Analisis = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
-        Jframe_Propiedades.setName("Propiedades"); // NOI18N
-        Jframe_Propiedades.setResizable(false);
+        JFrame_Conexion.setName("Propiedades"); // NOI18N
+        JFrame_Conexion.setResizable(false);
 
         jLabel3.setText("Material del Cable");
 
@@ -77,9 +69,9 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel5.setText("Ancho de Banda Soportado");
 
-        jLabel6.setText("Nombre de Conexion");
+        jLabel6.setText("Nodo a conectar");
 
-        cb_Material_coneccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cobre", "Fibra Optica" }));
+        cb_Material_coneccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cobre", "Fibra Optica" }));
 
         bt_crearInstalacion.setText("Crear");
         bt_crearInstalacion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,194 +82,90 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Propiedades del Repetidor");
+        jLabel7.setText("Creacion de Conexiones");
 
         jLabel8.setText("Metros");
 
         jLabel9.setText("Mb/s");
 
-        javax.swing.GroupLayout Jframe_PropiedadesLayout = new javax.swing.GroupLayout(Jframe_Propiedades.getContentPane());
-        Jframe_Propiedades.getContentPane().setLayout(Jframe_PropiedadesLayout);
-        Jframe_PropiedadesLayout.setHorizontalGroup(
-            Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Jframe_PropiedadesLayout.createSequentialGroup()
-                .addGroup(Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        bt_seleccionarNodo.setText("Seleccionar");
+        bt_seleccionarNodo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_seleccionarNodoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JFrame_ConexionLayout = new javax.swing.GroupLayout(JFrame_Conexion.getContentPane());
+        JFrame_Conexion.getContentPane().setLayout(JFrame_ConexionLayout);
+        JFrame_ConexionLayout.setHorizontalGroup(
+            JFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JFrame_ConexionLayout.createSequentialGroup()
+                .addGroup(JFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(Jframe_PropiedadesLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Jframe_PropiedadesLayout.createSequentialGroup()
-                                .addComponent(tf_Ancho_de_banda, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9))
-                            .addComponent(cb_Material_coneccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_Nombre_coneccion, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Jframe_PropiedadesLayout.createSequentialGroup()
-                                .addComponent(tf_Longitud_Cable, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)))
-                        .addGap(26, 59, Short.MAX_VALUE))
-                    .addGroup(Jframe_PropiedadesLayout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(bt_crearInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(JFrame_ConexionLayout.createSequentialGroup()
+                        .addGroup(JFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JFrame_ConexionLayout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addGroup(JFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(JFrame_ConexionLayout.createSequentialGroup()
+                                        .addGap(263, 263, 263)
+                                        .addGroup(JFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(JFrame_ConexionLayout.createSequentialGroup()
+                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(tf_Longitud_Cable, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(JFrame_ConexionLayout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(tf_Ancho_de_banda, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(39, 39, 39)
+                                        .addGroup(JFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel8)))
+                                    .addGroup(JFrame_ConexionLayout.createSequentialGroup()
+                                        .addGroup(JFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(JFrame_ConexionLayout.createSequentialGroup()
+                                                .addGap(254, 254, 254)
+                                                .addComponent(bt_seleccionarNodo))
+                                            .addGroup(JFrame_ConexionLayout.createSequentialGroup()
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(1, 1, 1)
+                                                .addComponent(cb_listaNodos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(27, 27, 27)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cb_Material_coneccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(JFrame_ConexionLayout.createSequentialGroup()
+                                .addGap(274, 274, 274)
+                                .addComponent(bt_crearInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 68, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        Jframe_PropiedadesLayout.setVerticalGroup(
-            Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Jframe_PropiedadesLayout.createSequentialGroup()
+        JFrame_ConexionLayout.setVerticalGroup(
+            JFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JFrame_ConexionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7)
-                .addGap(36, 36, 36)
-                .addGroup(Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(35, 35, 35)
+                .addGroup(JFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(tf_Nombre_coneccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_listaNodos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_seleccionarNodo)
                     .addComponent(jLabel3)
                     .addComponent(cb_Material_coneccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(65, 65, 65)
+                .addGroup(JFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(tf_Ancho_de_banda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Jframe_PropiedadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_Longitud_Cable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(bt_crearInstalacion)
-                .addGap(23, 23, 23))
-        );
-
-        jFrame_Conexion.setResizable(false);
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
-
-        bt_redDomestic.setText("  Red Domestica");
-        bt_redDomestic.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bt_redDomesticMouseClicked(evt);
-            }
-        });
-
-        bt_redEmpresarial.setText(" Red Empresarial");
-        bt_redEmpresarial.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bt_redEmpresarialMouseClicked(evt);
-            }
-        });
-
-        bt_ImportarMapadeRed.setText("Importar mapa de Red");
-
-        bt_AntenaCelular.setText(" Antena Celular");
-        bt_AntenaCelular.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bt_AntenaCelularMouseClicked(evt);
-            }
-        });
-
-        bt_coneccionDedicadal.setText("Conexión Dedicada");
-        bt_coneccionDedicadal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bt_coneccionDedicadalMouseClicked(evt);
-            }
-        });
-
-        jLabel2.setText("Crear Repetidor de:");
-
-        bt_ExportarMapadeRed.setText("Exportar Mapa de Red");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel2)
-                        .addGap(0, 33, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt_ImportarMapadeRed, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bt_AntenaCelular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bt_coneccionDedicadal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bt_redEmpresarial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bt_redDomestic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bt_ExportarMapadeRed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel2)
-                .addGap(13, 13, 13)
-                .addComponent(bt_redDomestic)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bt_redEmpresarial)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bt_coneccionDedicadal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bt_AntenaCelular)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(bt_ExportarMapadeRed)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bt_ImportarMapadeRed)
-                .addContainerGap())
-        );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {bt_AntenaCelular, bt_coneccionDedicadal, bt_redDomestic, bt_redEmpresarial});
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 204));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 317, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jLabel11.setFont(new java.awt.Font("Agency FB", 1, 48)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Red");
-        jLabel11.setToolTipText("");
-
-        javax.swing.GroupLayout jFrame_ConexionLayout = new javax.swing.GroupLayout(jFrame_Conexion.getContentPane());
-        jFrame_Conexion.getContentPane().setLayout(jFrame_ConexionLayout);
-        jFrame_ConexionLayout.setHorizontalGroup(
-            jFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame_ConexionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jFrame_ConexionLayout.setVerticalGroup(
-            jFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame_ConexionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 44, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(jFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(JFrame_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tf_Longitud_Cable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(59, 59, 59)
+                .addComponent(bt_crearInstalacion)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         Jframe_crearPunto.setResizable(false);
@@ -299,7 +187,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        cb_tipoPunto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Red Domestica", "Red Empresarial", "Antena Celular", "Conexion Dedicada" }));
+        cb_tipoPunto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Red Domestica", "Red Empresarial", "Antena Celular", "Conexion Dedicada" }));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -431,58 +319,62 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bt_redDomesticMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_redDomesticMouseClicked
-        this.mostrarventanaPropiedades();
-        this.limpiarPropiedadesdeConeccion();
-        this.tipoPunto = 1;
-    }//GEN-LAST:event_bt_redDomesticMouseClicked
-
     private void bt_crearInstalacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_crearInstalacionMouseClicked
-        boolean correcto = true;
-        int anchoBanda = 0;
-        if (this.cb_Material_coneccion.getSelectedItem().equals("Cobre")) {
-            if (Integer.parseInt(this.tf_Ancho_de_banda.getText()) > 100 || Integer.parseInt(this.tf_Ancho_de_banda.getText()) <= 0) {
-                correcto = false;
-                JOptionPane.showMessageDialog(this, "Ancho de banda no permitido para Cable de Cobre");
-            }
-        } else if (Integer.parseInt(this.tf_Ancho_de_banda.getText()) > 10240 || Integer.parseInt(this.tf_Ancho_de_banda.getText()) <= 0) {
-            correcto = false;
-            JOptionPane.showMessageDialog(this, "Ancho de banda no permitido para Cable de Fibra Optica");
-        }
+        boolean create = true;
 
-        if (correcto) {
-            String nombre = this.tf_Nombre_coneccion.getText();
-            int materialConexion = this.cb_Material_coneccion.getSelectedIndex() + 1;
+        if (verticesTemporales.getSize() == 2 && verticesTemporales.get(0) != verticesTemporales.get(1)) {
+            int tipoMaterial = this.cb_Material_coneccion.getSelectedIndex() + 1;
             int longitudCable = Integer.parseInt(this.tf_Longitud_Cable.getText());
-            anchoBanda = Integer.parseInt(this.tf_Ancho_de_banda.getText());
-            Instalacion nuevaInstalacion = new Instalacion(nombre, tipoPunto);
-            this.listaInstalaciones.insert(nuevaInstalacion, 0);
-            JOptionPane.showMessageDialog(null, "Conexion Agregada");
-            this.Jframe_Propiedades.setVisible(false);
+            int anchoBanda = Integer.parseInt(this.tf_Ancho_de_banda.getText());
+
+            if (tipoMaterial == 1 && anchoBanda > 100) {
+                create = false;
+                JOptionPane.showMessageDialog(this, "El Cobre no soporta ese ancho de banda", "ERROR", JOptionPane.WARNING_MESSAGE);
+            } else if (tipoMaterial == 2 && anchoBanda > 10240) {
+                create = false;
+                JOptionPane.showMessageDialog(this, "La fibra no soporta ese ancho de banda", "ERROR", JOptionPane.WARNING_MESSAGE);
+            }
+
+            if (create) {
+                if (principal.isAdyacente((Vertice) verticesTemporales.get(0), (Vertice) verticesTemporales.get(1)) == false) {
+                    Arista conexion = new Arista((Vertice) verticesTemporales.get(0), (Vertice) verticesTemporales.get(1));
+                    conexion.setMaterialConexion(tipoMaterial);
+                    conexion.setAnchoBanda(anchoBanda);
+                    conexion.setLongitudCable(longitudCable);
+                    principal.addEdge((Vertice) verticesTemporales.get(0), conexion);
+                    JOptionPane.showMessageDialog(null, "Conexion creada exitosamente");
+                    this.limpiarPropiedadesdeConeccion();
+                    contadorVertices = 0;
+                    verticesTemporales = new Lista();
+                    this.JFrame_Conexion.setVisible(false);
+                    this.pack();
+                    this.setLocationRelativeTo(this);
+                    this.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Estos dos nodos ya poseen una conexion", "ERROR", JOptionPane.WARNING_MESSAGE);
+                    this.limpiarPropiedadesdeConeccion();
+                    contadorVertices = 0;
+                    verticesTemporales = new Lista();
+                    this.JFrame_Conexion.setVisible(false);
+                    this.pack();
+                    this.setLocationRelativeTo(this);
+                    this.setVisible(true);
+                }
+            } else {
+                this.limpiarPropiedadesdeConeccion();
+            }
+
         } else {
+            JOptionPane.showMessageDialog(this, "No se cuentan con los nodos necesarios", "ERROR", JOptionPane.WARNING_MESSAGE);
             this.limpiarPropiedadesdeConeccion();
+            contadorVertices = 0;
+            verticesTemporales = new Lista();
+            this.JFrame_Conexion.setVisible(false);
+            this.pack();
+            this.setLocationRelativeTo(this);
+            this.setVisible(true);
         }
-
     }//GEN-LAST:event_bt_crearInstalacionMouseClicked
-
-    private void bt_redEmpresarialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_redEmpresarialMouseClicked
-        this.mostrarventanaPropiedades();
-        this.limpiarPropiedadesdeConeccion();
-        this.limpiarPropiedadesdeConeccion();
-        this.tipoPunto = 2;
-    }//GEN-LAST:event_bt_redEmpresarialMouseClicked
-
-    private void bt_coneccionDedicadalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_coneccionDedicadalMouseClicked
-        this.mostrarventanaPropiedades();
-        this.limpiarPropiedadesdeConeccion();
-        this.tipoPunto = 4;
-    }//GEN-LAST:event_bt_coneccionDedicadalMouseClicked
-
-    private void bt_AntenaCelularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_AntenaCelularMouseClicked
-        this.mostrarventanaPropiedades();
-        this.limpiarPropiedadesdeConeccion();
-        this.tipoPunto = 3;
-    }//GEN-LAST:event_bt_AntenaCelularMouseClicked
 
     private void bt_crearPuntoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_crearPuntoMouseClicked
         this.mostrarventanapunto();
@@ -490,11 +382,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_crearPuntoMouseClicked
 
     private void bt_CrearRedesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_CrearRedesMouseClicked
+        this.listInComboBox(this.principal.getTodosVertices(), cb_listaNodos);
+        this.setVisible(false);
         this.mostarventanaconexion();
     }//GEN-LAST:event_bt_CrearRedesMouseClicked
 
     private void bt_AnalisisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_AnalisisMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_bt_AnalisisMouseClicked
 
     private void tf_NombrePuntoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_NombrePuntoMouseClicked
@@ -505,14 +399,27 @@ public class Principal extends javax.swing.JFrame {
         String nombre = this.tf_NombrePunto.getText();
         int typePunto = this.cb_tipoPunto.getSelectedIndex() + 1;
         Instalacion nuevopunto = new Instalacion(nombre, typePunto);
-        this.listapuntos.insert(nuevopunto, 0);
+        this.principal.addVertice(nuevopunto);
         JOptionPane.showMessageDialog(null, "Punto creado exitosamente");
         this.Jframe_crearPunto.setVisible(false);
     }//GEN-LAST:event_jButton1MouseClicked
-    private void mostrarventanaPropiedades() {
-        this.Jframe_Propiedades.pack();
-        this.Jframe_Propiedades.setLocationRelativeTo(this);
-        this.Jframe_Propiedades.setVisible(true);
+
+    private void bt_seleccionarNodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_seleccionarNodoMouseClicked
+        if (contadorVertices < 2) {
+            this.verticesTemporales.push(this.cb_listaNodos.getSelectedItem());
+            contadorVertices++;
+            JOptionPane.showMessageDialog(this, "Nodo seleccionado correctamente");
+        } else {
+            JOptionPane.showMessageDialog(this, "Ya eligio los nodos necesarios", "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_bt_seleccionarNodoMouseClicked
+
+    public void listInComboBox(Lista list, JComboBox cb) {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < list.getSize(); i++) {
+            modelo.addElement(((Vertice) list.get(i)));
+        }
+        cb.setModel(modelo);
     }
 
     private void limpiarPropiedadesdePunto() {
@@ -526,13 +433,12 @@ public class Principal extends javax.swing.JFrame {
     }
 
     private void mostarventanaconexion() {
-        this.jFrame_Conexion.pack();
-        this.jFrame_Conexion.setLocationRelativeTo(this);
-        this.jFrame_Conexion.setVisible(true);
+        this.JFrame_Conexion.pack();
+        this.JFrame_Conexion.setLocationRelativeTo(this);
+        this.JFrame_Conexion.setVisible(true);
     }
 
     private void limpiarPropiedadesdeConeccion() {
-        this.tf_Nombre_coneccion.setText("");
         this.cb_Material_coneccion.setSelectedIndex(0);
         this.tf_Ancho_de_banda.setText("");
         this.tf_Longitud_Cable.setText("");
@@ -574,29 +480,22 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFrame Jframe_Propiedades;
+    private javax.swing.JFrame JFrame_Conexion;
     private javax.swing.JFrame Jframe_crearPunto;
     private javax.swing.JButton bt_Analisis;
-    private javax.swing.JButton bt_AntenaCelular;
     private javax.swing.JButton bt_CrearRedes;
-    private javax.swing.JButton bt_ExportarMapadeRed;
-    private javax.swing.JButton bt_ImportarMapadeRed;
-    private javax.swing.JButton bt_coneccionDedicadal;
     private javax.swing.JButton bt_crearInstalacion;
     private javax.swing.JButton bt_crearPunto;
-    private javax.swing.JButton bt_redDomestic;
-    private javax.swing.JButton bt_redEmpresarial;
+    private javax.swing.JButton bt_seleccionarNodo;
     private javax.swing.JComboBox<String> cb_Material_coneccion;
+    private javax.swing.JComboBox cb_listaNodos;
     private javax.swing.JComboBox<String> cb_tipoPunto;
     private javax.swing.JButton jButton1;
-    private javax.swing.JFrame jFrame_Conexion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -604,15 +503,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField tf_Ancho_de_banda;
     private javax.swing.JTextField tf_Longitud_Cable;
     private javax.swing.JTextField tf_NombrePunto;
-    private javax.swing.JTextField tf_Nombre_coneccion;
     // End of variables declaration//GEN-END:variables
-    Lista listaInstalaciones = new Lista();
-    Lista listapuntos = new Lista();
+    Grafo principal = new Grafo(new Vertice(new Instalacion("Principal", 2)));
     int tipoPunto;
+    Vertice main = new Vertice();
+    Lista verticesTemporales = new Lista();
+    int contadorVertices = 0;
 }

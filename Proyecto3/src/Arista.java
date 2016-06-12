@@ -65,4 +65,11 @@ public class Arista {
     public void setMaterialConexion(int material) {
             this.materialConexion = material;
     }
+
+    @Override
+    public String toString() {
+        return origen.getValue() + " <--> " + destino.getValue();
+    }
+    
+    
 }

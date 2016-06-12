@@ -35,7 +35,7 @@ public class Grafo {
         Lista retorno = new Lista();
         retorno.push(this.verticePrincipal);
         for (int i = 0; i < this.todosVertices.getSize(); i++) {
-            retorno.push(((Vertice)this.todosVertices.get(i)));
+            retorno.push((this.todosVertices.get(i)));
         }
         return retorno;
     }
@@ -45,26 +45,34 @@ public class Grafo {
     }
 
     public void addVertice(Object instalacion) {
-        this.getTodosVertices().push(new Vertice(instalacion));
+        this.todosVertices.push(new Vertice(instalacion));
     }
 
     public boolean verificarExistencia(Vertice uno) {
-        for (int i = 0; i < this.getTodosVertices().getSize(); i++) {
-            if (uno == this.getTodosVertices().get(i)) {
+        if(uno == this.verticePrincipal){
+        return true;
+        }
+        for (int i = 0; i < this.todosVertices.getSize(); i++) {
+            if (uno == this.todosVertices.get(i)) {
                 return true;
             }
         }
         return false;
     }
 
-    public void addEdge(Vertice origin, Vertice destiny) {
-
+    public void addEdge(Vertice origin, Arista conexion) {
+        origin.getAristas().push(conexion);
     }
 
     public boolean isAdyacente(Vertice uno, Vertice dos) {
         if (verificarExistencia(uno) && verificarExistencia(dos)) {
             for (int i = 0; i < uno.getAristas().getSize(); i++) {
                 if (((Arista) uno.getAristas().get(i)).getDestino() == dos) {
+                    return true;
+                }
+            }
+            for (int i = 0; i < dos.getAristas().getSize(); i++) {
+                if (((Arista) dos.getAristas().get(i)).getDestino() == uno) {
                     return true;
                 }
             }
@@ -101,14 +109,14 @@ public class Grafo {
 
     public void removeVertex(Vertice borrar) {
         if (verificarExistencia(borrar)) {
-            for (int i = 0; i < this.getTodosVertices().getSize(); i++) {
-                for (int k = 0; k < ((Vertice) this.getTodosVertices().get(i)).getAristas().getSize(); i++) {
-                     if(((Arista)((Vertice) this.getTodosVertices().get(i)).getAristas().get(k)).getDestino() == borrar){
-                         ((Vertice) this.getTodosVertices().get(i)).getAristas().remove(k);
+            for (int i = 0; i < this.todosVertices.getSize(); i++) {
+                for (int k = 0; k < ((Vertice) this.todosVertices.get(i)).getAristas().getSize(); i++) {
+                     if(((Arista)((Vertice) this.todosVertices.get(i)).getAristas().get(k)).getDestino() == borrar){
+                         ((Vertice) this.todosVertices.get(i)).getAristas().remove(k);
                      }
                 }
-                if (this.getTodosVertices().get(i) == borrar) {
-                    this.getTodosVertices().remove(i);
+                if (this.todosVertices.get(i) == borrar) {
+                    this.todosVertices.remove(i);
                 }
             }
         }
