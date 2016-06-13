@@ -37,7 +37,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        cb_Material_coneccion = new javax.swing.JComboBox<>();
+        cb_Material_coneccion = new javax.swing.JComboBox<String>();
         tf_Ancho_de_banda = new javax.swing.JTextField();
         tf_Longitud_Cable = new javax.swing.JTextField();
         bt_crearInstalacion = new javax.swing.JButton();
@@ -51,7 +51,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         tf_NombrePunto = new javax.swing.JTextField();
-        cb_tipoPunto = new javax.swing.JComboBox<>();
+        cb_tipoPunto = new javax.swing.JComboBox<String>();
         jLabel14 = new javax.swing.JLabel();
         JFrame_Analisis = new javax.swing.JFrame();
         jLabel2 = new javax.swing.JLabel();
@@ -60,9 +60,11 @@ public class Principal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jFrame_caminoCorto = new javax.swing.JFrame();
         jLabel11 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        bt_ev_caminoCorto = new javax.swing.JButton();
+        bt_seleccionarVertices = new javax.swing.JButton();
+        cb_paths = new javax.swing.JComboBox<String>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ta_shortestPath = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         bt_crearPunto = new javax.swing.JButton();
@@ -81,7 +83,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel6.setText("Nodo a conectar");
 
-        cb_Material_coneccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cobre", "Fibra Optica" }));
+        cb_Material_coneccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cobre", "Fibra Optica" }));
 
         bt_crearInstalacion.setText("Crear");
         bt_crearInstalacion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -197,7 +199,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        cb_tipoPunto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Red Domestica", "Red Empresarial", "Antena Celular", "Conexion Dedicada" }));
+        cb_tipoPunto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Red Domestica", "Red Empresarial", "Antena Celular", "Conexion Dedicada" }));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -290,42 +292,61 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel11.setText("Camino mas corto");
 
-        jButton5.setText(" ");
+        bt_ev_caminoCorto.setText("Evaluar");
+        bt_ev_caminoCorto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_ev_caminoCortoMouseClicked(evt);
+            }
+        });
 
-        jButton6.setText(" ");
+        bt_seleccionarVertices.setText("Seleccionar");
+        bt_seleccionarVertices.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_seleccionarVerticesMouseClicked(evt);
+            }
+        });
+
+        ta_shortestPath.setColumns(20);
+        ta_shortestPath.setRows(5);
+        jScrollPane1.setViewportView(ta_shortestPath);
 
         javax.swing.GroupLayout jFrame_caminoCortoLayout = new javax.swing.GroupLayout(jFrame_caminoCorto.getContentPane());
         jFrame_caminoCorto.getContentPane().setLayout(jFrame_caminoCortoLayout);
         jFrame_caminoCortoLayout.setHorizontalGroup(
             jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
-            .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
                 .addGroup(jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel11))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
+                                .addGap(158, 158, 158)
+                                .addComponent(jLabel11))
+                            .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(cb_paths, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(58, 58, 58)
+                                .addComponent(bt_seleccionarVertices)
+                                .addGap(44, 44, 44)
+                                .addComponent(bt_ev_caminoCorto, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 12, Short.MAX_VALUE)))
+                .addGap(50, 50, 50))
         );
         jFrame_caminoCortoLayout.setVerticalGroup(
             jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addGroup(jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addGap(40, 40, 40))
+                    .addComponent(cb_paths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_seleccionarVertices)
+                    .addComponent(bt_ev_caminoCorto))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addGap(42, 42, 42))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -484,6 +505,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_CrearRedesMouseClicked
 
     private void bt_AnalisisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_AnalisisMouseClicked
+        this.listInComboBox(principal.getTodosVertices(), this.cb_paths);
         this.JFrame_Analisis.pack();
         this.JFrame_Analisis.setLocationRelativeTo(this);
         this.JFrame_Analisis.setVisible(true);
@@ -518,6 +540,32 @@ public class Principal extends javax.swing.JFrame {
         this.jFrame_caminoCorto.setLocationRelativeTo(this);
         this.jFrame_caminoCorto.setVisible(true);
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void bt_seleccionarVerticesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_seleccionarVerticesMouseClicked
+        if (contadorVertices < 2) {
+            this.verticesTemporales.push((this.cb_paths.getSelectedItem()));
+            this.contadorVertices++;
+            JOptionPane.showMessageDialog(this, "Nodo seleccionado correctamente", "", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Ya eligio los nodos necesarios", "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_bt_seleccionarVerticesMouseClicked
+
+    private void bt_ev_caminoCortoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_ev_caminoCortoMouseClicked
+        if (contadorVertices == 2) {
+            Lista caminoCorto = new Lista();
+            caminoCorto = principal.caminoMasCorto((Vertice)verticesTemporales.get(0), (Vertice)verticesTemporales.get(1));
+            this.ta_shortestPath.setText("");
+            for (int i = 0; i < caminoCorto.getSize(); i++) {
+                this.ta_shortestPath.append(i+1 + " " + caminoCorto.get(i));
+            }
+            contadorVertices = 0;
+            this.verticesTemporales = new Lista();
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "NO hay los nodos necesarios para la operacion", "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_bt_ev_caminoCortoMouseClicked
 
     public void listInComboBox(Lista list, JComboBox cb) {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
@@ -592,17 +640,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_CrearRedes;
     private javax.swing.JButton bt_crearInstalacion;
     private javax.swing.JButton bt_crearPunto;
+    private javax.swing.JButton bt_ev_caminoCorto;
     private javax.swing.JButton bt_seleccionarNodo;
+    private javax.swing.JButton bt_seleccionarVertices;
     private javax.swing.JComboBox<String> cb_Material_coneccion;
     private javax.swing.JComboBox cb_listaNodos;
+    private javax.swing.JComboBox<String> cb_paths;
     private javax.swing.JComboBox<String> cb_tipoPunto;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFrame jFrame_caminoCorto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -619,6 +667,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea ta_shortestPath;
     private javax.swing.JTextField tf_Ancho_de_banda;
     private javax.swing.JTextField tf_Longitud_Cable;
     private javax.swing.JTextField tf_NombrePunto;
