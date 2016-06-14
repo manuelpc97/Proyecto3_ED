@@ -123,10 +123,14 @@ public class Grafo {
         }
     }
 
-    public Lista getPaths() {
+    public Lista getPaths(Vertice inicio, Vertice fin) {
         Lista nodos = new Lista();
         Lista retorno = new Lista();
-        nodos = this.getTodosVertices();
+        retorno = this.getTodosVertices();
+        nodos.push(inicio);
+        retorno.remove(retorno.find(inicio));
+        nodos.concat(retorno);
+        retorno = new Lista();
         int[][] matriz = new int[nodos.getSize()][nodos.getSize()];
         for (int i = 0; i < nodos.getSize(); i++) {
             for (int j = 0; j < nodos.getSize(); j++) {
@@ -164,7 +168,7 @@ public class Grafo {
         Lista retorno = new Lista();
         Lista minimoCamino = new Lista();
         Lista camino = new Lista();
-        retorno = this.getPaths();
+        retorno = this.getPaths(uno,dos);
         int parametro = 0;
 
         for (int i = 0; i < retorno.getSize(); i++) {

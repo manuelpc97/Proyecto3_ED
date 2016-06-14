@@ -65,6 +65,7 @@ public class Principal extends javax.swing.JFrame {
         cb_paths = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
         ta_shortestPath = new javax.swing.JTextArea();
+        jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         bt_crearPunto = new javax.swing.JButton();
@@ -310,15 +311,19 @@ public class Principal extends javax.swing.JFrame {
         ta_shortestPath.setRows(5);
         jScrollPane1.setViewportView(ta_shortestPath);
 
+        jButton5.setText("Limpiar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jFrame_caminoCortoLayout = new javax.swing.GroupLayout(jFrame_caminoCorto.getContentPane());
         jFrame_caminoCorto.getContentPane().setLayout(jFrame_caminoCortoLayout);
         jFrame_caminoCortoLayout.setHorizontalGroup(
             jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
                 .addGroup(jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
                         .addGroup(jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
@@ -331,21 +336,31 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(bt_seleccionarVertices)
                                 .addGap(44, 44, 44)
                                 .addComponent(bt_ev_caminoCorto, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 12, Short.MAX_VALUE)))
+                        .addGap(0, 12, Short.MAX_VALUE))
+                    .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(50, 50, 50))
         );
         jFrame_caminoCortoLayout.setVerticalGroup(
             jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame_caminoCortoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addGroup(jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cb_paths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_seleccionarVertices)
-                    .addComponent(bt_ev_caminoCorto))
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addGroup(jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton5))
+                    .addGroup(jFrame_caminoCortoLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addGroup(jFrame_caminoCortoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_paths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_seleccionarVertices)
+                            .addComponent(bt_ev_caminoCorto))
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)))
                 .addGap(42, 42, 42))
         );
 
@@ -455,10 +470,15 @@ public class Principal extends javax.swing.JFrame {
             if (create) {
                 if (principal.isAdyacente((Vertice) verticesTemporales.get(0), (Vertice) verticesTemporales.get(1)) == false) {
                     Arista conexion = new Arista((Vertice) verticesTemporales.get(0), (Vertice) verticesTemporales.get(1));
+                    Arista conexion2 = new Arista((Vertice) verticesTemporales.get(1), (Vertice) verticesTemporales.get(0));
                     conexion.setMaterialConexion(tipoMaterial);
                     conexion.setAnchoBanda(anchoBanda);
                     conexion.setLongitudCable(longitudCable);
+                    conexion2.setMaterialConexion(tipoMaterial);
+                    conexion2.setAnchoBanda(anchoBanda);
+                    conexion2.setLongitudCable(longitudCable);
                     principal.addEdge((Vertice) verticesTemporales.get(0), conexion);
+                    principal.addEdge((Vertice) verticesTemporales.get(1), conexion2);
                     JOptionPane.showMessageDialog(null, "Conexion creada exitosamente");
                     this.limpiarPropiedadesdeConeccion();
                     contadorVertices = 0;
@@ -557,7 +577,7 @@ public class Principal extends javax.swing.JFrame {
             caminoCorto = principal.caminoMasCorto((Vertice)verticesTemporales.get(0), (Vertice)verticesTemporales.get(1));
             this.ta_shortestPath.setText("");
             for (int i = 0; i < caminoCorto.getSize(); i++) {
-                this.ta_shortestPath.append(i+1 + " " + caminoCorto.get(i));
+                this.ta_shortestPath.append(i+1 + " " + caminoCorto.get(i)+"\n");
             }
             contadorVertices = 0;
             this.verticesTemporales = new Lista();
@@ -566,6 +586,12 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "NO hay los nodos necesarios para la operacion", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_bt_ev_caminoCortoMouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+            contadorVertices = 0;
+            this.verticesTemporales = new Lista();
+            this.ta_shortestPath.setText("");
+    }//GEN-LAST:event_jButton5MouseClicked
 
     public void listInComboBox(Lista list, JComboBox cb) {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
@@ -651,6 +677,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JFrame jFrame_caminoCorto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
