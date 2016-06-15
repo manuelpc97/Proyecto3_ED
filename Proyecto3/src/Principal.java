@@ -66,6 +66,19 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ta_shortestPath = new javax.swing.JTextArea();
         jButton5 = new javax.swing.JButton();
+        jd_maxAncho = new javax.swing.JDialog();
+        jLabel15 = new javax.swing.JLabel();
+        cb_nodosMax = new javax.swing.JComboBox();
+        bt_evaluar2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ta_maxAncho = new javax.swing.JTextArea();
+        jLabel16 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jd_costos = new javax.swing.JDialog();
+        jLabel17 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ta_costos = new javax.swing.JTextArea();
+        bt_costos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         bt_crearPunto = new javax.swing.JButton();
@@ -255,6 +268,18 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton3.setText("Mayor ancho de banda");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        jButton4.setText("Menores Costos");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout JFrame_AnalisisLayout = new javax.swing.GroupLayout(JFrame_Analisis.getContentPane());
         JFrame_Analisis.getContentPane().setLayout(JFrame_AnalisisLayout);
@@ -362,6 +387,124 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)))
                 .addGap(42, 42, 42))
+        );
+
+        jLabel15.setText("Maximo Ancho de Banda");
+
+        bt_evaluar2.setText("Evaluar");
+        bt_evaluar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_evaluar2MouseClicked(evt);
+            }
+        });
+
+        ta_maxAncho.setColumns(20);
+        ta_maxAncho.setRows(5);
+        jScrollPane2.setViewportView(ta_maxAncho);
+
+        jLabel16.setText("Nodos");
+
+        jButton6.setText("Seleccionar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_maxAnchoLayout = new javax.swing.GroupLayout(jd_maxAncho.getContentPane());
+        jd_maxAncho.getContentPane().setLayout(jd_maxAnchoLayout);
+        jd_maxAnchoLayout.setHorizontalGroup(
+            jd_maxAnchoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_maxAnchoLayout.createSequentialGroup()
+                .addGroup(jd_maxAnchoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_maxAnchoLayout.createSequentialGroup()
+                        .addGap(208, 208, 208)
+                        .addComponent(jLabel15)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jd_maxAnchoLayout.createSequentialGroup()
+                        .addGroup(jd_maxAnchoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jd_maxAnchoLayout.createSequentialGroup()
+                                .addGroup(jd_maxAnchoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jd_maxAnchoLayout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jLabel16))
+                                    .addGroup(jd_maxAnchoLayout.createSequentialGroup()
+                                        .addGap(91, 91, 91)
+                                        .addComponent(bt_evaluar2)))
+                                .addGap(106, 106, 106))
+                            .addGroup(jd_maxAnchoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(cb_nodosMax, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton6)
+                                .addGap(18, 18, 18)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jd_maxAnchoLayout.setVerticalGroup(
+            jd_maxAnchoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_maxAnchoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15)
+                .addGap(36, 36, 36)
+                .addGroup(jd_maxAnchoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_maxAnchoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addContainerGap())
+                    .addGroup(jd_maxAnchoLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_maxAnchoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_nodosMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                        .addComponent(bt_evaluar2)
+                        .addGap(72, 72, 72))))
+        );
+
+        jLabel17.setText("Minimos Costos");
+
+        ta_costos.setColumns(20);
+        ta_costos.setRows(5);
+        jScrollPane3.setViewportView(ta_costos);
+
+        bt_costos.setText("Mostrar Menores Costos");
+        bt_costos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_costosMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_costosLayout = new javax.swing.GroupLayout(jd_costos.getContentPane());
+        jd_costos.getContentPane().setLayout(jd_costosLayout);
+        jd_costosLayout.setHorizontalGroup(
+            jd_costosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_costosLayout.createSequentialGroup()
+                .addGroup(jd_costosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_costosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3))
+                    .addGroup(jd_costosLayout.createSequentialGroup()
+                        .addGap(221, 221, 221)
+                        .addComponent(jLabel17)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jd_costosLayout.createSequentialGroup()
+                .addGap(183, 183, 183)
+                .addComponent(bt_costos)
+                .addContainerGap(201, Short.MAX_VALUE))
+        );
+        jd_costosLayout.setVerticalGroup(
+            jd_costosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_costosLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel17)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bt_costos)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -593,6 +736,64 @@ public class Principal extends javax.swing.JFrame {
             this.ta_shortestPath.setText("");
     }//GEN-LAST:event_jButton5MouseClicked
 
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+       this.JFrame_Analisis.setVisible(false);
+       listInComboBox(principal.getTodosVertices(), this.cb_nodosMax);
+       this.jd_maxAncho.pack();
+       this.jd_maxAncho.setLocationRelativeTo(this);
+       this.jd_maxAncho.setVisible(true);
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void bt_evaluar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_evaluar2MouseClicked
+        this.ta_maxAncho.setText("");
+        if(contadorVertices == 2){
+            Lista lista = new Lista();
+            lista = principal.mayorAnchoBanda((Vertice)verticesTemporales.get(0), (Vertice)verticesTemporales.get(1));
+            
+            for (int i = 0; i < lista.getSize(); i++) {
+                this.ta_maxAncho.append( (i+1) + " "  + lista.get(i) + "\n");
+            }
+            
+            contadorVertices = 0;
+            verticesTemporales = new Lista();
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay un numero correcto de nodos");
+        }
+    }//GEN-LAST:event_bt_evaluar2MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        if(contadorVertices < 2){
+            verticesTemporales.push(this.cb_nodosMax.getSelectedItem());
+            contadorVertices++;
+            JOptionPane.showMessageDialog(this, "Nodo agregado exitosamente");
+        }else{
+            JOptionPane.showMessageDialog(this, "Numero de nodos excedidos");
+        }
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        this.JFrame_Analisis.setVisible(false);
+        this.ta_costos.setText("");
+        this.jd_costos.pack();
+        this.jd_costos.setLocationRelativeTo(this);
+        this.jd_costos.setVisible(true);
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void bt_costosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_costosMouseClicked
+        this.ta_costos.setText("");
+        Lista mostrar = new Lista();
+        mostrar = principal.menoresCostos();
+        
+        for (int i = 0; i < mostrar.getSize(); i++) {
+            ta_costos.append(i+1 + " ");
+            ta_costos.append("Para llegar a: " + ((Lista)mostrar.get(i)).get(((Lista)mostrar.get(i)).getSize()-1));
+            for (int k = 0; k < ((Lista)mostrar.get(i)).getSize(); k++) {
+                ta_costos.append(((Lista)mostrar.get(i)).get(k) + "||");
+            }
+            ta_costos.append("\n");
+        }
+    }//GEN-LAST:event_bt_costosMouseClicked
+
     public void listInComboBox(Lista list, JComboBox cb) {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < list.getSize(); i++) {
@@ -664,13 +865,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JFrame Jframe_crearPunto;
     private javax.swing.JButton bt_Analisis;
     private javax.swing.JButton bt_CrearRedes;
+    private javax.swing.JButton bt_costos;
     private javax.swing.JButton bt_crearInstalacion;
     private javax.swing.JButton bt_crearPunto;
     private javax.swing.JButton bt_ev_caminoCorto;
+    private javax.swing.JButton bt_evaluar2;
     private javax.swing.JButton bt_seleccionarNodo;
     private javax.swing.JButton bt_seleccionarVertices;
     private javax.swing.JComboBox<String> cb_Material_coneccion;
     private javax.swing.JComboBox cb_listaNodos;
+    private javax.swing.JComboBox cb_nodosMax;
     private javax.swing.JComboBox<String> cb_paths;
     private javax.swing.JComboBox<String> cb_tipoPunto;
     private javax.swing.JButton jButton1;
@@ -678,6 +882,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JFrame jFrame_caminoCorto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -685,6 +890,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -695,6 +903,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JDialog jd_costos;
+    private javax.swing.JDialog jd_maxAncho;
+    private javax.swing.JTextArea ta_costos;
+    private javax.swing.JTextArea ta_maxAncho;
     private javax.swing.JTextArea ta_shortestPath;
     private javax.swing.JTextField tf_Ancho_de_banda;
     private javax.swing.JTextField tf_Longitud_Cable;
