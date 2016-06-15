@@ -240,20 +240,24 @@ public class Grafo {
     }
     
     public Lista evaluarLista(Lista evaluar, Vertice destino){
-        int contador = 0;
+        System.out.println("entra: " + evaluar.getSize());
+        Lista retorno = new Lista();
         
         for (int i = 0; i < evaluar.getSize(); i++) {
+            int contador = 0;
             for (int j = 0; j < ((Lista)evaluar.get(i)).getSize(); j++) {
                 if(((Lista)evaluar.get(i)).get(j) == destino){
                     contador++;
                 }
             }
-            if(contador >1){
-                evaluar.remove(i);
+            System.out.println("contador despues" + contador);
+            if(contador <=1){
+                System.out.println("entra if");
+                retorno.push(evaluar.get(i));
             }
-            contador = 0;
         }
         
-        return evaluar;
+        System.out.println("sale: " +retorno.getSize());
+        return retorno;
     }
 }

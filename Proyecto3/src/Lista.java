@@ -135,7 +135,7 @@ public class Lista {
             if (position == 0) {
                 this.setHead(head.getNext());
             } else if (position == size - 1) {
-                this.at(size - 2).setNext(null);
+               this.at(size - 2).setNext(null);
             } else {
                 ListNode current = head;
 
