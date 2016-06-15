@@ -11,20 +11,38 @@ import javax.swing.JOptionPane;
  * @author manuel
  */
 public class Instalacion {
+
     String nombre;
     int tipoPunto;
+    int x = -1, y = -1;
+
     /*Si tipo punto == 1  entonces es red domestica
-     Si tipo punto == 2  entonces es red empresarial
-     Si tipo punto == 3  entonces es antena celular
-     Si tipo punto == 4  entonces es conexion dedicada
+    Si tipo punto == 2  entonces es red empresarial
+    Si tipo punto == 3  entonces es antena celular
+    Si tipo punto == 4  entonces es conexion dedicada
      */
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
 
     public Instalacion() {
     }
 
     public Instalacion(String nombre, int tipoPunto) {
         this.nombre = nombre;
-       
+
         if (tipoPunto == 1 || tipoPunto == 2 || tipoPunto == 3 || tipoPunto == 4) {
             this.tipoPunto = tipoPunto;
         } else {
@@ -32,7 +50,6 @@ public class Instalacion {
             this.tipoPunto = 4;
         }
     }
-
 
     public String getNombre() {
         return nombre;
