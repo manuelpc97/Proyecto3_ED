@@ -786,7 +786,7 @@ public class Principal extends javax.swing.JFrame {
         
         for (int i = 0; i < mostrar.getSize(); i++) {
             ta_costos.append(i+1 + " ");
-            ta_costos.append("Para llegar a: " + ((Lista)mostrar.get(i)).get(((Lista)mostrar.get(i)).getSize()-1));
+            ta_costos.append("Para llegar a: " + ((Lista)mostrar.get(i)).get(((Lista)mostrar.get(i)).getSize()-1) + "\n");
             for (int k = 0; k < ((Lista)mostrar.get(i)).getSize(); k++) {
                 ta_costos.append(((Lista)mostrar.get(i)).get(k) + "||");
             }
