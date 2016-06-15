@@ -1,4 +1,9 @@
 
+import com.mxgraph.swing.mxGraphComponent;
+import com.mxgraph.view.mxGraph;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.util.Random;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -19,8 +24,16 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        cmp.setPreferredSize(new Dimension(800, 300));
+        this.jf_mapeo.setPreferredSize(new Dimension(800, 300));
         this.setLocationRelativeTo(null);
         this.pack();
+        nuevainstalacion.setX(this.jf_mapeo.getWidth() / 2);
+        nuevainstalacion.setY(this.jf_mapeo.getHeight() / 2);
+        principal = new Grafo(new Vertice(nuevainstalacion));
+        nodos.push(graph.insertVertex(parent, null, nuevainstalacion.getNombre(), nuevainstalacion.getX(), nuevainstalacion.getY(), 28, 28));
+        x += 60;
+        y += 60;
     }
 
     /**
@@ -37,7 +50,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        cb_Material_coneccion = new javax.swing.JComboBox<String>();
+        cb_Material_coneccion = new javax.swing.JComboBox<>();
         tf_Ancho_de_banda = new javax.swing.JTextField();
         tf_Longitud_Cable = new javax.swing.JTextField();
         bt_crearInstalacion = new javax.swing.JButton();
@@ -51,7 +64,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         tf_NombrePunto = new javax.swing.JTextField();
-        cb_tipoPunto = new javax.swing.JComboBox<String>();
+        cb_tipoPunto = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         JFrame_Analisis = new javax.swing.JFrame();
         jLabel2 = new javax.swing.JLabel();
@@ -62,7 +75,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         bt_ev_caminoCorto = new javax.swing.JButton();
         bt_seleccionarVertices = new javax.swing.JButton();
-        cb_paths = new javax.swing.JComboBox<String>();
+        cb_paths = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         ta_shortestPath = new javax.swing.JTextArea();
         jButton5 = new javax.swing.JButton();
@@ -79,12 +92,14 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         ta_costos = new javax.swing.JTextArea();
         bt_costos = new javax.swing.JButton();
+        jf_mapeo = new javax.swing.JFrame();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         bt_crearPunto = new javax.swing.JButton();
         bt_CrearRedes = new javax.swing.JButton();
         bt_Analisis = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
 
         JFrame_Conexion.setName("Propiedades"); // NOI18N
         JFrame_Conexion.setResizable(false);
@@ -97,7 +112,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel6.setText("Nodo a conectar");
 
-        cb_Material_coneccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cobre", "Fibra Optica" }));
+        cb_Material_coneccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cobre", "Fibra Optica" }));
 
         bt_crearInstalacion.setText("Crear");
         bt_crearInstalacion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -213,7 +228,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        cb_tipoPunto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Red Domestica", "Red Empresarial", "Antena Celular", "Conexion Dedicada" }));
+        cb_tipoPunto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Red Domestica", "Red Empresarial", "Antena Celular", "Conexion Dedicada" }));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -507,6 +522,17 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout jf_mapeoLayout = new javax.swing.GroupLayout(jf_mapeo.getContentPane());
+        jf_mapeo.getContentPane().setLayout(jf_mapeoLayout);
+        jf_mapeoLayout.setHorizontalGroup(
+            jf_mapeoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jf_mapeoLayout.setVerticalGroup(
+            jf_mapeoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal");
         setName("Menu Principal"); // NOI18N
@@ -566,6 +592,13 @@ public class Principal extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Menu Principal ");
 
+        jButton7.setText("Ver Mapa de Red");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -576,9 +609,13 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 37, Short.MAX_VALUE))
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jButton7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -586,7 +623,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(jButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13))
         );
@@ -617,9 +656,11 @@ public class Principal extends javax.swing.JFrame {
                     conexion.setMaterialConexion(tipoMaterial);
                     conexion.setAnchoBanda(anchoBanda);
                     conexion.setLongitudCable(longitudCable);
+                    graph.insertEdge(parent, null, conexion.getLongitudCable(), v2, v1);
                     conexion2.setMaterialConexion(tipoMaterial);
                     conexion2.setAnchoBanda(anchoBanda);
                     conexion2.setLongitudCable(longitudCable);
+                    graph.insertEdge(parent, null, conexion.getLongitudCable(), v1, v2);
                     principal.addEdge((Vertice) verticesTemporales.get(0), conexion);
                     principal.addEdge((Vertice) verticesTemporales.get(1), conexion2);
                     JOptionPane.showMessageDialog(null, "Conexion creada exitosamente");
@@ -680,18 +721,36 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_NombrePuntoMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        int contadorverti = 0, mayor = 100;
         String nombre = this.tf_NombrePunto.getText();
         int typePunto = this.cb_tipoPunto.getSelectedIndex() + 1;
         Instalacion nuevopunto = new Instalacion(nombre, typePunto);
+        nuevopunto.setX(x + rn.nextInt(mayor) + 1);
+        nuevopunto.setY(x + rn.nextInt(mayor) + 1);
+        contadorverti++;
+        if (contadorverti == 3) {
+            mayor += 100;
+            contadorverti = 0;
+        }
         this.principal.addVertice(nuevopunto);
         JOptionPane.showMessageDialog(null, "Punto creado exitosamente");
         this.Jframe_crearPunto.setVisible(false);
+        this.nodos.push(graph.insertVertex(parent, null, nuevopunto.getNombre(), nuevopunto.getX(), nuevopunto.getY(), 28, 28));
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void bt_seleccionarNodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_seleccionarNodoMouseClicked
         if (contadorVertices < 2) {
             this.verticesTemporales.push(this.cb_listaNodos.getSelectedItem());
             contadorVertices++;
+            if (contadorVertices == 1) {
+                x = ((Instalacion) ((Vertice) cb_listaNodos.getSelectedItem()).getValue()).getX();
+                y = ((Instalacion) ((Vertice) cb_listaNodos.getSelectedItem()).getValue()).getY();
+                v1 = nodos.get(cb_listaNodos.getSelectedIndex());
+            } else if (contadorVertices == 2) {
+                x2 = ((Instalacion) ((Vertice) cb_listaNodos.getSelectedItem()).getValue()).getX();
+                y2 = ((Instalacion) ((Vertice) cb_listaNodos.getSelectedItem()).getValue()).getY();
+                v2 = nodos.get(cb_listaNodos.getSelectedIndex());
+            }
             JOptionPane.showMessageDialog(this, "Nodo seleccionado correctamente");
         } else {
             JOptionPane.showMessageDialog(this, "Ya eligio los nodos necesarios", "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -717,56 +776,56 @@ public class Principal extends javax.swing.JFrame {
     private void bt_ev_caminoCortoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_ev_caminoCortoMouseClicked
         if (contadorVertices == 2) {
             Lista caminoCorto = new Lista();
-            caminoCorto = principal.caminoMasCorto((Vertice)verticesTemporales.get(0), (Vertice)verticesTemporales.get(1));
+            caminoCorto = principal.caminoMasCorto((Vertice) verticesTemporales.get(0), (Vertice) verticesTemporales.get(1));
             this.ta_shortestPath.setText("");
             for (int i = 0; i < caminoCorto.getSize(); i++) {
-                this.ta_shortestPath.append(i+1 + " " + caminoCorto.get(i)+"\n");
+                this.ta_shortestPath.append(i + 1 + " " + caminoCorto.get(i) + "\n");
             }
             contadorVertices = 0;
             this.verticesTemporales = new Lista();
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "NO hay los nodos necesarios para la operacion", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_bt_ev_caminoCortoMouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-            contadorVertices = 0;
-            this.verticesTemporales = new Lista();
-            this.ta_shortestPath.setText("");
+        contadorVertices = 0;
+        this.verticesTemporales = new Lista();
+        this.ta_shortestPath.setText("");
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-       this.JFrame_Analisis.setVisible(false);
-       listInComboBox(principal.getTodosVertices(), this.cb_nodosMax);
-       this.jd_maxAncho.pack();
-       this.jd_maxAncho.setLocationRelativeTo(this);
-       this.jd_maxAncho.setVisible(true);
+        this.JFrame_Analisis.setVisible(false);
+        listInComboBox(principal.getTodosVertices(), this.cb_nodosMax);
+        this.jd_maxAncho.pack();
+        this.jd_maxAncho.setLocationRelativeTo(this);
+        this.jd_maxAncho.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void bt_evaluar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_evaluar2MouseClicked
         this.ta_maxAncho.setText("");
-        if(contadorVertices == 2){
+        if (contadorVertices == 2) {
             Lista lista = new Lista();
-            lista = principal.mayorAnchoBanda((Vertice)verticesTemporales.get(0), (Vertice)verticesTemporales.get(1));
-            
+            lista = principal.mayorAnchoBanda((Vertice) verticesTemporales.get(0), (Vertice) verticesTemporales.get(1));
+
             for (int i = 0; i < lista.getSize(); i++) {
-                this.ta_maxAncho.append( (i+1) + " "  + lista.get(i) + "\n");
+                this.ta_maxAncho.append((i + 1) + " " + lista.get(i) + "\n");
             }
-            
+
             contadorVertices = 0;
             verticesTemporales = new Lista();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No hay un numero correcto de nodos");
         }
     }//GEN-LAST:event_bt_evaluar2MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        if(contadorVertices < 2){
+        if (contadorVertices < 2) {
             verticesTemporales.push(this.cb_nodosMax.getSelectedItem());
             contadorVertices++;
             JOptionPane.showMessageDialog(this, "Nodo agregado exitosamente");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Numero de nodos excedidos");
         }
     }//GEN-LAST:event_jButton6MouseClicked
@@ -783,16 +842,28 @@ public class Principal extends javax.swing.JFrame {
         this.ta_costos.setText("");
         Lista mostrar = new Lista();
         mostrar = principal.menoresCostos();
-        
+
         for (int i = 0; i < mostrar.getSize(); i++) {
-            ta_costos.append(i+1 + " ");
-            ta_costos.append("Para llegar a: " + ((Lista)mostrar.get(i)).get(((Lista)mostrar.get(i)).getSize()-1));
-            for (int k = 0; k < ((Lista)mostrar.get(i)).getSize(); k++) {
-                ta_costos.append(((Lista)mostrar.get(i)).get(k) + "||");
+            ta_costos.append(i + 1 + " ");
+            ta_costos.append("Para llegar a: " + ((Lista) mostrar.get(i)).get(((Lista) mostrar.get(i)).getSize() - 1));
+            for (int k = 0; k < ((Lista) mostrar.get(i)).getSize(); k++) {
+                ta_costos.append(((Lista) mostrar.get(i)).get(k) + "||");
             }
             ta_costos.append("\n");
         }
     }//GEN-LAST:event_bt_costosMouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        dibujar();
+    }//GEN-LAST:event_jButton7MouseClicked
+    public void dibujar() {
+        graph.getModel().beginUpdate();
+        System.out.println(this.jf_mapeo.getComponentCount());
+        graph.getModel().endUpdate();
+        this.jf_mapeo.add(cmp);
+        this.jf_mapeo.setLayout(new FlowLayout());
+        this.jf_mapeo.setVisible(true);
+    }
 
     public void listInComboBox(Lista list, JComboBox cb) {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
@@ -883,6 +954,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JFrame jFrame_caminoCorto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -907,6 +979,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JDialog jd_costos;
     private javax.swing.JDialog jd_maxAncho;
+    private javax.swing.JFrame jf_mapeo;
     private javax.swing.JTextArea ta_costos;
     private javax.swing.JTextArea ta_maxAncho;
     private javax.swing.JTextArea ta_shortestPath;
@@ -914,9 +987,21 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_Longitud_Cable;
     private javax.swing.JTextField tf_NombrePunto;
     // End of variables declaration//GEN-END:variables
-    Grafo principal = new Grafo(new Vertice(new Instalacion("Principal", 2)));
+    Instalacion nuevainstalacion = new Instalacion("Principal", 2);
+    Grafo principal = null;
+
     int tipoPunto;
     Vertice main = new Vertice();
     Lista verticesTemporales = new Lista();
     int contadorVertices = 0;
+
+    mxGraph graph = new mxGraph();
+    mxGraphComponent cmp = new mxGraphComponent(graph);
+    Object parent = graph.getDefaultParent();
+    Lista nodos = new Lista();
+    Lista nombres = new Lista();
+    Object v1 = null, v2 = null;
+    int x = cmp.getWidth() / 2, y = cmp.getWidth() / 2;
+    int x2 = -1, y2 = -1, rnado = 0;
+    Random rn = new Random();
 }
